@@ -267,63 +267,6 @@ Azure Function を作成したので、実装を始めます。この演習で�
 
     ```Run``` メソッドが関数実行時に呼び出される。ここでは ```Run``` メソッド内で ```AnalyzeImageAsync``` メソッドに対して `uploaded` コンテナにアップロードされた画像のストリームオブジェクトを渡して、Computer Vision API で分析。その後 ```StoreBlobWithMetadata``` メソッド内で結果によって `accepted` か `rejected` コンテナに画像をコピー。
 
-1. この関数は Azure Storage パッケージに依存するため、アセンブリの参照を追加。`extensions.csproj` を編集する必要があるため、**コンソール**を選択。
-
-    ![function console](./media/function-console.png)
-
-1. 以下コマンドを順番に実行。
-
-    ```sh
-    cd ..
-    cat extensions.csproj
-    ```
-
-    以下情報が表示される。
-
-    ```sh
-    <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <WarningsAsErrors />
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.0" />
-        <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.0.*" />
-    </ItemGroup>
-    </Project>
-    ```
-
-    続けて以下のコマンドを実行。
-
-    ```sh
-    curl -o extensions.csproj -L https://aka.ms/cs-extensions
-    cat extensions.csproj
-    ```
-
-    以下情報が表示される。
-
-    ```sh
-    <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <WarningsAsErrors />
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.0" />
-        <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.0.*" />
-        <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
-    </ItemGroup>
-    </Project>
-    ```
-
-    最後に以下コマンドを実行。
-
-    ```sh
-    dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
-    ```
-
-    "Build succeeded" が出れば成功。
-
 1. **保存**をクリックして保存を実行後、**実行**をクリックして関数を実行。画像はないので*"[...] The specified container does not exist."* が出ることを確認。
 
     ![Saving the project file](./media/cs-save-project-file.png)
