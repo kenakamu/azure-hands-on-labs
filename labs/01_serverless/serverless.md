@@ -224,6 +224,9 @@ Azure Function を作成したので、実装を始めます。この演習で�
 
             if (blob != null)
             {
+                // Set position of stream `image` to 0
+                image.Seek(0, SeekOrigin.Begin);
+
                 // Upload the blob
                 await blob.UploadFromStreamAsync(image);
 
