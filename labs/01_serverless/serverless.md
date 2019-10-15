@@ -4,7 +4,7 @@
 
 関数を使う事でコードが再利用でき、効率よくプログラムが書けます。Azure Functions はこの概念をさらに拡張したもので、クラウド上で単一の方法で管理でき、要求に応じて動的にスケールし、多くのサービスやシステムで共有できるイベント駆動側のサーバーレスアプリケーションとして開発できます。開発言語は C# をはじめとして、JavaScript, Python, Bash, PowerShell など様々な言語が利用でき、要求に応じて実行されるアプリケーションやナノサービスを開発する事ができます。
 
-このラボでは、Azure Blog ストレージのコンテナを監視し、画像が追加された際に [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) を使って画像を解析する Azure Functions を開発します。この Azure Function は画像にアダルト要素や人種差別的なコンテンツが含まれていないかを解析します。問題が検知された場合、画像はあるコンテナにコピーされ、問題がない画像は異なるコンテナにコピーします。また、解析結果に含まれるスコアは、 blob のメタデータとして保存します。最後に Azure Logic App により、却下された画像については通知を行います。
+このラボでは、Azure Blob ストレージのコンテナを監視し、画像が追加された際に [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) を使って画像を解析する Azure Functions を開発します。この Azure Function は画像にアダルト要素や人種差別的なコンテンツが含まれていないかを解析します。問題が検知された場合、画像はあるコンテナにコピーされ、問題がない画像は異なるコンテナにコピーします。また、解析結果に含まれるスコアは、 blob のメタデータとして保存します。最後に Azure Logic App により、却下された画像については通知を行います。
 
 以下の図で全体像を示します:
 ![Overview](./media/overview.png)
@@ -104,7 +104,7 @@
 1. Function App の作成が完了すると以下のリソースが確認できる:
     ![Opening the resource group](./media/new-functions-app-5.png)
 
-1. ストレージアカウントをクリックして **BLOG** をクリック。
+1. ストレージアカウントをクリックして **BLOB** をクリック。
 
     ![Opening blob storage](./media/open-blob-storage.png)
 
